@@ -21,20 +21,24 @@
     <!-------------------  Menu  -------------------->
     <div class="ui top  menu">
         <div class="item">
-            <img src="/images/logo.png">
+            <img src="{% static 'images/logo.jpg' %}"/>
         </div>
         <a class="item">أخبار عاجلة</a>
         <a class="item">رياضة</a>
         <a class="item">مال وأعمال</a>
     </div>
+
+<!--
     <div class="ui bottom fixed menu">
         <div class="item">
-            <img src="/images/logo.png">
+            <img src="{% static 'images/logo.jpg' %}"/>
+
         </div>
         <a class="item">Features</a>
         <a class="item">Testimonials</a>
         <a class="item">Sign-in</a>
     </div>
+-->
     <!-------------------  END Menu  -------------------->
 
 
@@ -44,7 +48,7 @@
     <div class="ui fluid card">
 
         <div class="image"> <!-- stoped hereeeeeeeeeeeeeeeee -->
-             <img src="{{ post.cover}}" alt="{{ post.title }}">
+             <img src="{{ post.cover }}" alt="{{ post.title }}">
         </div>
         <div class="content">
 
@@ -69,23 +73,29 @@
 </div>
 
 
-<!-- Form -->
 <div class="ui inverted segment">
 
-    <form class="ui inverted form container">
+    <!-- Form for reg data user -->
+    <form action="{% url 'LandingPage:form_page' %}" method="POST" class="ui inverted form container">
+        {% csrf_token %}
+
+        <!-- First Name -->
         <div class="field">
             <label>الأسم الاول</label>
-            <input type="text" name="first-name" placeholder="الاسم الاول">
+            {{form.first_name}} >
+
         </div>
 
+        <!-- First Name -->
         <div class="field">
             <label>الأسم الثاني</label>
-            <input type="text" name="last-name" placeholder="الاسم الثاني">
+            {{form.second_name}}>
         </div>
 
+        <!-- E-mail -->
         <div class="field">
             <label>البريد الألكتروني</label>
-            <input type="text" name="last-name" placeholder="joe@schmoe.com">
+            {{form.E_mail}}
         </div>
 
 
@@ -105,30 +115,24 @@
                </div>
             </div>
         -->
-
+        <!-- Countries -->
         <div class="ui field">
             <label>أختر الدولة</label>
-            <select name="gender" class="ui dropdown" id="select">
-                <option value="">أختر الدولة</option>
-                <option value="Saudi">Saudi Arabia +966</option>
-                <option value="Qatar">Qatar +974</option>
-                <option value="Oman">Oman +968</option>
-                <option value="Kuwait">Kuwait +965</option>
-                <option value="Bahrain">Bahrain +973</option>
-
-            </select>
+            {{form.country}}
         </div>
 
-
+        <!-- Mobile Number -->
+        <!-- Mobile Number -->
         <div class="ui field">
             <label>رقم الهاتف</label>
 
             <div class="inline fields">
                 <div class="eight wide field">
-                    <input type="text" placeholder="(xxx)">
+                    {{form.phone}}
                 </div>
+
                 <div class="three wide field">
-                    <input type="text" placeholder="الكود">
+                    {{form.phone_code}}
                 </div>
             </div>
         </div>
@@ -136,17 +140,135 @@
         <!-- Nationalety -->
         <div class="ui field">
             <label>الجنسية</label>
-            <select name="gender" class="ui dropdown" id="select">
-                <option value="">الجنسية</option>
-                <option value="خليجي">خليجي</option>
-                <option value="ليس خليجي">ليس خليجي</option>
-            </select>
+            {{form.nationality}}
         </div>
-
-
         <button class="ui fluid positive button" type="submit">Submit</button>
     </form>
 </div>
+
+
+
+
+
+
+
+<!--
+
+<p>HH</p>
+    <h2>New post</h2>
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="ui container">
+<div class="ui comments">
+  <h3 class="ui dividing header">التعليقات</h3>
+  <div class="comment">
+    <a class="avatar">
+      <img src="{% static 'images/matt.jpg' %}"/>
+    </a>
+    <div class="content">
+      <a class="author">مناصر العجمى</a>
+      <div class="metadata">
+        <span class="date">Today at 5:42PM</span>
+      </div>
+      <div class="text">
+        الشركه تعمل بالسوق السعودي منذ سنتان وليست بجديده ولكن الاعلام بدأ يلتفت اليها والله كل شىء ينتشر يطوله الخراب ...الحين كل الوافدين يقفزون بالشركه ويخربوها ما نبى كلام كثير حولها الله يسامحكم
+      </div>
+      <div class="actions">
+        <a class="reply">Reply</a>
+      </div>
+    </div>
+  </div>
+  <div class="comment">
+    <a class="avatar">
+      <img src="{% static 'images/elliot.jpg' %}"/>
+    </a>
+    <div class="content">
+      <a class="author">صالح عبد الله </a>
+      <div class="metadata">
+        <span class="date">Yesterday at 12:30AM</span>
+      </div>
+      <div class="text">
+        <p>        الشركه تعمل بالسوق السعودي منذ سنتان وليست بجديده ولكن الاعلام بدأ يلتفت اليها والله كل شىء ينتشر يطوله الخراب ...
+!</p>
+      </div>
+      <div class="actions">
+        <a class="reply">Reply</a>
+      </div>
+    </div>
+    <div class="comments">
+      <div class="comment">
+        <a class="avatar">
+      <img src="{% static 'images/jenny.jpg' %}"/>
+        </a>
+        <div class="content">
+          <a class="author">ابو نواف</a>
+          <div class="metadata">
+            <span class="date">Just now</span>
+          </div>
+          <div class="text">
+        الشركه تعمل بالسوق السعودي منذ سنتان وليست بجديده ولكن الاعلام بدأ يلتفت اليها والله كل شىء ينتشر يطوله الخراب ...الحين كل الوافدين يقفزون بالشركه ويخربوها ما نبى كلام كثير حولها الله يسامحكم
+          </div>
+          <div class="actions">
+            <a class="reply">Reply</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="comment">
+    <a class="avatar">
+      <img src="{% static 'images/joe.jpg' %}"/>
+    </a>
+    <div class="content">
+      <a class="author">ماجد الحامد</a>
+      <div class="metadata">
+        <span class="date">5 days ago</span>
+      </div>
+      <div class="text">
+        الشركه تعمل بالسوق السعودي منذ سنتان وليست بجديده ولكن الاعلام بدأ يلتفت اليها والله كل شىء ينتشر يطوله الخراب ...الحين كل الوافدين يقفزون بالشركه ويخربوها ما نبى كلام كثير حولها الله يسامحكم
+      </div>
+      <div class="actions">
+        <a class="reply">Reply</a>
+      </div>
+    </div>
+  </div>
+  <form class="ui reply form">
+    <div class="field">
+      <textarea></textarea>
+    </div>
+    <div class="ui blue labeled submit icon button">
+      <i class="icon edit"></i> Add Reply
+    </div>
+  </form>
+</div>
+</div>
+
+
+
+
 
 
 <!-- compiled and minified JavaScript -->

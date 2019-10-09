@@ -1,0 +1,84 @@
+<div class="ui inverted segment">
+
+    <!-- Form for reg data user -->
+    <form action="{% url 'LandingPage:form_page' %}" method="POST" class="ui inverted form container">
+        {% csrf_token %}
+
+        <!-- First Name -->
+        <div class="field">
+            <label>الأسم الاول</label>
+            <input type="text" name="first-name" placeholder="الاسم الاول" {{form.first_name}} >
+
+        </div>
+
+        <!-- First Name -->
+        <div class="field">
+            <label>الأسم الثاني</label>
+            <input type="text" name="last-name" placeholder="الاسم الثاني" {{form.second_name}}>
+        </div>
+
+        <!-- E-mail -->
+        <div class="field">
+            <label>البريد الألكتروني</label>
+            <input type="text" name="last-name" placeholder="joe@schmoe.com">
+        </div>
+
+
+        <!--
+                    <div class="field">
+              <label>Country</label>
+              <div class="ui fluid search selection dropdown" >
+                <input type="hidden" name="country">
+                <i class="dropdown icon"></i>
+                <div class="default text">Select Country</div>
+                <div class="menu">
+            <div class="item" data-value="bh"><i class="bh flag"></i>Bahrain</div>
+            <div class="item" data-value="kw"><i class="kw flag"></i>Kuwait</div>
+            <div class="item" data-value="qa"><i class="qa flag"></i>Qatar</div>
+            <div class="item" data-value="sa"><i class="sa flag"></i>Saudi Arabia</div>
+          </div>
+               </div>
+            </div>
+        -->
+        <!-- Countries -->
+        <div class="ui field">
+            <label>أختر الدولة</label>
+            <select name="gender" class="ui dropdown" id="select">
+                <option value="">أختر الدولة</option>
+                <option value="Saudi">Saudi Arabia +966</option>
+                <option value="Qatar">Qatar +974</option>
+                <option value="Oman">Oman +968</option>
+                <option value="Kuwait">Kuwait +965</option>
+                <option value="Bahrain">Bahrain +973</option>
+
+            </select>
+        </div>
+
+        <!-- Mobile Number -->
+        <div class="ui field">
+            <label>رقم الهاتف</label>
+
+            <div class="inline fields">
+                <div class="eight wide field">
+                    <input type="text" placeholder="(xxx)">
+                </div>
+                <div class="three wide field">
+                    <input type="text" placeholder="الكود">
+                </div>
+            </div>
+        </div>
+
+        <!-- Nationalety -->
+        <div class="ui field">
+            <label>الجنسية</label>
+            <select name="gender" class="ui dropdown" id="select">
+                <option value="">الجنسية</option>
+                <option value="خليجي">خليجي</option>
+                <option value="ليس خليجي">ليس خليجي</option>
+            </select>
+        </div>
+
+
+        <button class="ui fluid positive button" type="submit">Submit</button>
+    </form>
+</div>
