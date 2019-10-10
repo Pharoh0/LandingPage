@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from phone_field import PhoneField
 # Article class.
 
 class Reporter(models.Model):
@@ -35,7 +36,7 @@ class User(models.Model):
     country = models.CharField(max_length=250, choices=COUNTRY_CHOICES, null=True)
     phone = models.IntegerField(null=True)
     phone_code = models.IntegerField(null=True)
-    birthday = models.DateField(null=True, blank=True)
+    birthday = models.IntegerField(null=True)
     NATIONALITY_CHOICES = [('خليجي','خليجي'),
                            ('ليس خليجي','ليس خليجي')]
     nationality = models.CharField(max_length=250, choices=NATIONALITY_CHOICES, null=True)

@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.utils import timezone
 from multiurl import ContinueResolving
 
-from .models import Article
+from .models import Article, User
 from .forms import UserForm
 # Create your views here.
 
@@ -18,7 +18,7 @@ def form_page(request):
     else:
         form = UserForm()
     posts = Article.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    return render(request, 'LandingPage/form_page.html', {'form': form, 'posts': posts})
+    return render(request, 'LandingPage/form_page.html', {'form': form, 'posts': posts,})
 
 
 
