@@ -1,6 +1,7 @@
+from django.core.validators import MaxValueValidator, MinValueValidator, RegexValidator
 from django.db import models
 from django.conf import settings
-from phone_field import PhoneField
+from phonenumber_field.modelfields import PhoneNumberField
 # Article class.
 
 class Reporter(models.Model):
@@ -21,7 +22,6 @@ class Article(models.Model):
         return self.title
 
 
-
 # registration class.
 
 
@@ -35,11 +35,22 @@ class User(models.Model):
                        ('Qatar +948','QATAR +948')]
     country = models.CharField(max_length=250, choices=COUNTRY_CHOICES, null=True)
     phone = models.IntegerField(null=True)
+    #phone = PhoneNumberField()
+    #phone = models.IntegerField(max_length=10, unique=True, validators=[RegexValidator(regex='^\d{10}$', message='Length has to be 10', code='Invalid number')])
     phone_code = models.IntegerField(null=True)
-    birthday = models.IntegerField(null=True)
-    NATIONALITY_CHOICES = [('خليجي','خليجي'),
-                           ('ليس خليجي','ليس خليجي')]
+    age = models.IntegerField(null=True)
+    NATIONALITY_CHOICES = (('1', 'خليجي'), ('2', 'ليس خليجي'))
     nationality = models.CharField(max_length=250, choices=NATIONALITY_CHOICES, null=True)
 
     def __str__(self):
         return self.first_name
+
+
+
+
+
+
+
+    #phone = models.CharField(null=True, max_length=10, validators=[RegexValidator(r'^\d{1,15}$')])
+    #phone_code = PhoneNumberPrefixWidget(null=True)
+    #phone = PhoneNumberField(null=True)

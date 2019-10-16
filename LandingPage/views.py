@@ -13,8 +13,12 @@ def form_page(request):
     if request.method == 'POST':
         form = UserForm(request.POST)
         if form.is_valid():
+            nationality = form.cleaned_data['nationality']
             form.save()
-            return redirect('LandingPage:thank_you')
+            if nationality == '1':
+                return redirect('LandingPage:thank_you')
+            else:
+                return redirect('LandingPage:thank_you_not')
     else:
         form = UserForm()
     posts = Article.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
@@ -27,6 +31,9 @@ def thank_you(request):
     return render(request, 'LandingPage/thank_you_page.html', {})
 
 
+# Thank younot page.
+def thank_you_not(request):
+    return render(request, 'LandingPage/thank_you_page_not.html', {})
 
 
 
