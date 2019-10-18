@@ -25,7 +25,7 @@ SECRET_KEY = '2jc(-8k-_7qsy8kh=aeuoigem@=+y%9sn*((onnibm6$jn2ord'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['178.128.198.68']
+ALLOWED_HOSTS = ['www.ahdaslkhaleej.com']
 
 FACEBOOK_PIXEL_ID = '2388107881225630'
 
@@ -137,4 +137,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static') #static
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') #media
 MEDIA_URL = '/media/'
+
 
