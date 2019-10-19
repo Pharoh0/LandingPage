@@ -4,7 +4,7 @@
 <html dir="rtl" lang="ar">
 <head>
     <title>اول مستثمر في شركة تداول الوليد بن طلال يحقق 2 مليون ريال سعودي
-</title>
+    </title>
     <link
             rel="stylesheet"
             href="https://cdn.rtlcss.com/semantic-ui/2.2.6/semantic.rtl.min.css"
@@ -18,96 +18,145 @@
 </head>
 <body>
 
-<div class="ui ">
-            <div class="item" id="logo">
-            <img src="{% static 'images/logo2.png' %}" width="350" />
-        </div>
+<div class="ui container">
+    <div class="item" id="logo">
+        <img src="{% static 'images/logo2.png' %}" width="350"/>
+    </div>
+
 
     <!-------------------  Menu  -------------------->
-    <div class="ui inverted top massive menu">
-        <div class="item">
-            <img src="{% static 'images/logo2.png' %}"/>
-        </div>
-        <a class="item">الرئيسية</a>
-        <a class="item"> عاجل</a>
-        <a class="item">اقتصاد وبورصة</a>
-        <a class="item">رياضة</a>
-        <a class="item">سياسة</a>
+    <div class="ui stackable inverted top massive menu grid container">
+        <div class="computer only row">
 
+            <div class="item">
+                <img src="{% static 'images/logo2.png' %}"/>
+            </div>
+            <a class="item">الرئيسية</a>
+            <a class="item"> عاجل</a>
+            <a class="item">اقتصاد وبورصة</a>
+            <a class="item">رياضة</a>
+            <a class="item">سياسة</a>
 
-
-    </div>
-
-<!--
-    <div class="ui bottom fixed menu">
-        <div class="item">
-            <img src="{% static 'images/logo.jpg' %}"/>
 
         </div>
-        <a class="item">Features</a>
-        <a class="item">Testimonials</a>
-        <a class="item">Sign-in</a>
+
+        <!-------------------  tablet mobile -------------------->
+
+                <div class="tablet only row">
+
+            <div class="item">
+                <img src="{% static 'images/logo2.png' %}"/>
+            </div>
+            <a class="item">الرئيسية</a>
+            <a class="item"> عاجل</a>
+            <a class="item">اقتصاد وبورصة</a>
+            <a class="item">رياضة</a>
+            <a class="item">سياسة</a>
+
+
+        </div>
+
+
+        <!-------------------  Menu mobile -------------------->
+
+        <div class="mobile only row grid">
+            <div class="ui sidebar inverted top massive menu ">
+
+                <div class="item">
+                    <img src="{% static 'images/logo2.png' %}"/>
+                </div>
+                <a class="item">الرئيسية</a>
+                <a class="item"> عاجل</a>
+                <a class="item">اقتصاد وبورصة</a>
+                <a class="item">رياضة</a>
+                <a class="item">سياسة</a>
+                <!-- sidebar icon -->
+                <!-- sidebar icon -->
+
+
+            </div>
+            <div class="menu">
+            </div>
+            <!-- sidebar icon with ID toggle-->
+            <a id="toggle" class="item">
+                <i class="sidebar icon"></i>menu</a>
+
+
+        </div>
     </div>
--->
+
+
+    <!--
+        <div class="ui bottom fixed menu">
+            <div class="item">
+                <img src="{% static 'images/logo.jpg' %}"/>
+
+            </div>
+            <a class="item">Features</a>
+            <a class="item">Testimonials</a>
+            <a class="item">Sign-in</a>
+        </div>
+    -->
     <!-------------------  END Menu  -------------------->
 
 
     <!-------------------  Article  -------------------->
     {% for post in posts %}
-<div class="ui container">
+    <div class="ui container">
 
-    <div class="ui fluid card">
+        <div class="ui fluid card">
 
-        <div class="image"> <!-- stoped hereeeeeeeeeeeeeeeee -->
-             <img src="{{ post.cover.url }}" alt="{{ post.title }}" width="360" height="160"/>
-        </div>
-        <div class="content">
-
-            <a class="header">{{ post.title }}</a>
-            <br>
-            <div class="meta">
-                <span class="date">تم النشر في: {{ post.published_date }}</span>
+            <div class="image">
+                <img src="{{ post.cover.url }}" alt="{{ post.title }}" width="360" height="160"/>
             </div>
-            <div class="description des" id="des">{{post.content}}</div>
+            <div class="content">
+
+                <a class="header" id="header">{{ post.title }}</a>
+                <br>
+                <div class="meta">
+                    <span class="date">تم النشر في: {{ post.published_date }}</span>
+                </div>
+                <div class="description des" id="des">{{post.content}}</div>
+            </div>
+            <div class="extra content">
+                <a>
+                    <i class="facebook large icon"></i>
+                    <i class="twitter large icon"></i>
+                    <i class="instagram large icon"></i>
+                    22 التعليقات
+                </a>
+            </div>
+            {% endfor %}
+
         </div>
-        <div class="extra content">
-            <a>
-                <i class="facebook large icon"></i>
-                <i class="twitter large icon"></i>
-                <i class="instagram large icon"></i>
-                22 التعليقات
-            </a>
-        </div>
-        {% endfor %}
+        <!-------------------  End Article  -------------------->
+
 
     </div>
-    <!-------------------  End Article  -------------------->
-
-
-</div>
 </div>
 
 
 <div class="ui inverted segment">
 
     <!-- Form for reg data user -->
+
     <form action="{% url 'LandingPage:form_page' %}" method="POST" class="ui inverted form container">
         {% csrf_token %}
-
         <!-- First Name -->
-        <div class="field">
+
+        <div class="sixteen wide column field ">
             <label>الأسم الاول</label>
             {{form.first_name}}
         </div>
 
         <!-- First Name -->
-        <div class="field">
+        <div class="sixteen wide column field">
             <label>الأسم الثاني</label>
             {{form.second_name}}
         </div>
 
         <!-- E-mail -->
-        <div class="field">
+        <div class="sixteen wide column field">
             <label>البريد الألكتروني</label>
             {{form.E_mail}}
         </div>
@@ -128,13 +177,18 @@
             </div>
         -->
         <!-- Countries -->
-        <div class="ui field">
+        <div class="ui sixteen wide column field">
             <label>أختر الدولة</label>
             {{form.country}}
         </div>
 
+        <div class="ui sixteen wide column field">
+            <label>رقم الهاتف</label>
+            {{form.phone}}
+        </div>
+
         <!-- Mobile Number -->
-        <div class="ui field">
+        <!--<div class="ui field">
             <label>رقم الهاتف</label>
 
             <div class="inline fields">
@@ -146,17 +200,17 @@
                     {{form.phone_code}}
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <!-- Birthdate -->
-                <div class="ui field">
+        <div class="ui sixteen wide column field">
             <label>العمر</label>
             {{form.age}}
         </div>
 
 
         <!-- Nationalety -->
-        <div class="ui field">
+        <div class="ui sixteen wide column field">
             <label>الجنسية</label>
             {{form.nationality}}
         </div>
@@ -170,88 +224,93 @@
 <br>
 
 <div class="ui container">
-<div class="ui comments" id="usercomment">
-  <h3 class="ui dividing header">احدث التعليقات</h3>
-  <div class="comment">
-    <a class="avatar">
-      <img src="{% static 'images/matt.jpg' %}"/>
-    </a>
-    <div class="content">
-      <a class="author">مناصر العجمى</a>
-      <div class="metadata">
-        <span class="date">Today at 5:42PM</span>
-      </div>
-      <div class="text">
-        الشركه تعمل بالسوق السعودي منذ سنتان وليست بجديده ولكن الاعلام بدأ يلتفت اليها والله كل شىء ينتشر يطوله الخراب ...الحين كل الوافدين يقفزون بالشركه ويخربوها ما نبى كلام كثير حولها الله يسامحكم
-      </div>
-      <div class="actions">
-        <a class="reply">Reply</a>
-      </div>
-    </div>
-  </div>
-  <div class="comment">
-    <a class="avatar">
-      <img src="{% static 'images/elliot.jpg' %}"/>
-    </a>
-    <div class="content">
-      <a class="author">صالح عبد الله </a>
-      <div class="metadata">
-        <span class="date">Yesterday at 12:30AM</span>
-      </div>
-      <div class="text">
-        <p>        الشركه تعمل بالسوق السعودي منذ سنتان وليست بجديده ولكن الاعلام بدأ يلتفت اليها والله كل شىء ينتشر يطوله الخراب ...
-!</p>
-      </div>
-      <div class="actions">
-        <a class="reply">Reply</a>
-      </div>
-    </div>
-    <div class="comments">
-      <div class="comment">
-        <a class="avatar">
-      <img src="{% static 'images/jenny.jpg' %}"/>
-        </a>
-        <div class="content">
-          <a class="author">ابو نواف</a>
-          <div class="metadata">
-            <span class="date">Just now</span>
-          </div>
-          <div class="text">
-        الشركه تعمل بالسوق السعودي منذ سنتان وليست بجديده ولكن الاعلام بدأ يلتفت اليها والله كل شىء ينتشر يطوله الخراب ...الحين كل الوافدين يقفزون بالشركه ويخربوها ما نبى كلام كثير حولها الله يسامحكم
-          </div>
-          <div class="actions">
-            <a class="reply">Reply</a>
-          </div>
+    <div class="ui comments" id="usercomment">
+        <h3 class="ui dividing header">احدث التعليقات</h3>
+        <div class="comment">
+            <a class="avatar">
+                <img src="{% static 'images/three.jpg' %}"/>
+            </a>
+            <div class="content">
+                <a class="author">مناصر العجمى</a>
+                <div class="metadata">
+                    <span class="date">Today at 5:42PM</span>
+                </div>
+                <div class="text">
+                    الشركه تعمل بالسوق السعودي منذ سنتان وليست بجديده ولكن الاعلام بدأ يلتفت اليها والله كل شىء ينتشر
+                    يطوله الخراب ...الحين كل الوافدين يقفزون بالشركه ويخربوها ما نبى كلام كثير حولها الله يسامحكم
+                </div>
+                <div class="actions">
+                    <a class="reply">Reply</a>
+                </div>
+            </div>
         </div>
-      </div>
+        <div class="comment">
+            <a class="avatar">
+                <img src="{% static 'images/tow.jpg' %}"/>
+            </a>
+            <div class="content">
+                <a class="author">صالح عبد الله </a>
+                <div class="metadata">
+                    <span class="date">Yesterday at 12:30AM</span>
+                </div>
+                <div class="text">
+                    <p> الشركه تعمل بالسوق السعودي منذ سنتان وليست بجديده ولكن الاعلام بدأ يلتفت اليها والله كل شىء
+                        ينتشر يطوله الخراب ...
+                        !</p>
+                </div>
+                <div class="actions">
+                    <a class="reply">Reply</a>
+                </div>
+            </div>
+            <div class="comments">
+                <div class="comment">
+                    <a class="avatar">
+                        <img src="{% static 'images/one.jpg' %}"/>
+                    </a>
+                    <div class="content">
+                        <a class="author">ابو نواف</a>
+                        <div class="metadata">
+                            <span class="date">Just now</span>
+                        </div>
+                        <div class="text">
+                            الشركه تعمل بالسوق السعودي منذ سنتان وليست بجديده ولكن الاعلام بدأ يلتفت اليها والله كل شىء
+                            ينتشر يطوله الخراب ...الحين كل الوافدين يقفزون بالشركه ويخربوها ما نبى كلام كثير حولها الله
+                            يسامحكم
+                        </div>
+                        <div class="actions">
+                            <a class="reply">Reply</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="comment">
+            <a class="avatar">
+                <img src="{% static 'images/four.jpg' %}"/>
+            </a>
+            <div class="content">
+                <a class="author">ماجد الحامد</a>
+                <div class="metadata">
+                    <span class="date">5 days ago</span>
+                </div>
+                <div class="text">
+                    الشركه تعمل بالسوق السعودي منذ سنتان وليست بجديده ولكن الاعلام بدأ يلتفت اليها والله كل شىء ينتشر
+                    يطوله الخراب ...الحين كل الوافدين يقفزون بالشركه ويخربوها ما نبى كلام كثير حولها الله يسامحكم
+                </div>
+                <div class="actions">
+                    <a class="reply">Reply</a>
+                </div>
+            </div>
+        </div>
+        <form class="ui reply form">
+            <div class="field">
+                <textarea></textarea>
+            </div>
+            <div class="ui blue labeled submit icon button">
+                <i class="icon edit"></i> Add Reply
+            </div>
+        </form>
     </div>
-  </div>
-  <div class="comment">
-    <a class="avatar">
-      <img src="{% static 'images/joe.jpg' %}"/>
-    </a>
-    <div class="content">
-      <a class="author">ماجد الحامد</a>
-      <div class="metadata">
-        <span class="date">5 days ago</span>
-      </div>
-      <div class="text">
-        الشركه تعمل بالسوق السعودي منذ سنتان وليست بجديده ولكن الاعلام بدأ يلتفت اليها والله كل شىء ينتشر يطوله الخراب ...الحين كل الوافدين يقفزون بالشركه ويخربوها ما نبى كلام كثير حولها الله يسامحكم
-      </div>
-      <div class="actions">
-        <a class="reply">Reply</a>
-      </div>
-    </div>
-  </div>
-  <form class="ui reply form">
-    <div class="field">
-      <textarea></textarea>
-    </div>
-    <div class="ui blue labeled submit icon button">
-      <i class="icon edit"></i> Add Reply
-    </div>
-  </form>
-</div>
 </div>
 
 <!-- compiled and minified JavaScript -->
@@ -260,8 +319,16 @@
         integrity="sha384-kZT+CItOKWHYL+Rz37W2NEz60Pu2JJJ8wgzq+82VWsi3QM53eNFzQJZqzhPuyo63"
         crossorigin="anonymous"></script>
 
-<script src="{% static " js/form_page.js" %}"></script>
+<!--<script src="{% static " js/form_page.js" %}"></script>-->
+<!--<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>-->
+<script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
 
 
-    </body>
+<script type="text/javascript" src="{% static 'js/form_page.js' %}"></script>
+
+
+</body>
 </html>

@@ -25,6 +25,8 @@ class UserForm(forms.ModelForm):
             'second_name': forms.TextInput(attrs={'placeholder': 'الاسم الثاني'}),
             'E_mail': forms.EmailInput(attrs={'placeholder': 'joe@schmoe.com'}),
             'nationality': forms.Select(choices=NATIONALITY_CHOICES, attrs={'class': 'form-control'}),
+            'first_name': forms.TextInput(attrs={'placeholder': 'الاسم الاول'}),
+
             #'phone': PhoneNumberField(attrs={'placeholder': 'enter phone'}),
 
         }

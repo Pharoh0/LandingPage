@@ -1,7 +1,7 @@
 
 
 body{
-    height : 3000px;
+    height : aotu;
 }
 
 .form {
@@ -12,12 +12,37 @@ body{
     margin-top : 10000x;
 }
 
-#des {
-    font-size: 1.3rem;
-    word-spacing: 3px;
-    line-height: 1.5;
+/* title */
+#header{
+     font-size: 2rem;
 
 }
+
+
+/* des */
+#des {
+    font-size: 2rem;
+    word-spacing: 3px;
+    line-height: 2.5;
+
+}
+
+/* Medium devices (landscape tablets, 600px and up to 990px) */
+
+@media only screen and (min-width: 600px) and (max-width: 990px) {
+    #des{
+         font-size: 1.5rem;
+}
+}
+/** contetnt mobile **/
+@media only screen and (max-width: 600px) {
+    #des{
+         font-size: 2rem;
+
+    }
+}
+
+
 
 #logo {
     margin-top : 30px;
